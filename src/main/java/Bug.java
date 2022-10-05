@@ -7,7 +7,7 @@ public class Bug extends ReportType{
         this.expectedResult = expectedResult;
         this.actualResult = actualResult;
     }
-
+    //asdasdasd
 
     public String getExpectedResult() {
         return expectedResult;
