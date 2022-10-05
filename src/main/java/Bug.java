@@ -1,11 +1,10 @@
 public class Bug extends ReportType{
     private String expectedResult;
-    private String actualResult;
 
-    public Bug(String expectedResult, String actualResult) {
-        super();
+
+    public Bug(String titulo,String descripcion,String expectedResult, String actualResult) {
+        super(titulo,descripcion,actualResult);
         this.expectedResult = expectedResult;
-        this.actualResult = actualResult;
     }
     //asdasdasd
 
@@ -17,11 +16,6 @@ public class Bug extends ReportType{
         this.expectedResult = expectedResult;
     }
 
-    public String getActualResult() {
-        return actualResult;
-    }
 
-    public void setActualResult(String actualResult) {
-        this.actualResult = actualResult;
-    }
+
 }
