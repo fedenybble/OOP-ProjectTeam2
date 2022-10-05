@@ -1,3 +1,7 @@
+package model;
+
+import model.Paso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +71,7 @@ public abstract class ReportType {
 
     @Override
     public String toString() {
-        return "ReportType{" +
+        return "model.ReportType{" +
                 "titulo='" + titulo + "\n" +
                 ", descripcion='" + descripcion + "\n" +
                 ", prioridad=" + prioridad + "\n" +

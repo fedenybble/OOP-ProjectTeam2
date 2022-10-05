@@ -1,3 +1,5 @@
+package model;
+
 public class Paso {
     private String descripcion;
     private String resutladoEsperado;
@@ -25,7 +27,7 @@ public class Paso {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Paso{");
+        final StringBuilder sb = new StringBuilder("model.Paso{");
         sb.append("descripcion='").append(descripcion).append('\'');
         sb.append(", resutladoEsperado='").append(resutladoEsperado).append('\'');
         sb.append('}');
