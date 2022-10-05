@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Enhancement extends ReportType {
     private String sugerenciaResultados;
-
+    //aaaa
     public Enhancement(String titulo,String descripcion,String actualResult,String sugerenciaResultados) {
         super(titulo,descripcion,actualResult);
         this.sugerenciaResultados = sugerenciaResultados;

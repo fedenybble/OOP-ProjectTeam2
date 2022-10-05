@@ -9,7 +9,7 @@ public abstract class ReportType {
     private  int severidad;
     private List<Paso> pasos;
     private String actualReuslt;
-
+    //aaaa
     public ReportType(String titulo, String descripcion,String actualReuslt) {
         this.titulo = titulo;
         this.descripcion = descripcion;

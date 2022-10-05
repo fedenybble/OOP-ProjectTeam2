@@ -1,7 +1,7 @@
 public class Bug extends ReportType{
     private String expectedResult;
 
-
+    //aaaa
     public Bug(String titulo,String descripcion,String expectedResult, String actualResult) {
         super(titulo,descripcion,actualResult);
         this.expectedResult = expectedResult;
