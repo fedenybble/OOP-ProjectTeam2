@@ -1,3 +1,5 @@
+package model;
+
 import java.util.List;
 
 public class Enhancement extends ReportType {
@@ -18,7 +20,7 @@ public class Enhancement extends ReportType {
 
     @Override
     public String toString() {
-        return "Enhancement{" +
+        return "model.Enhancement{" +
                 "sugerenciaResultados='" + sugerenciaResultados + '\'' +
                 "} \n " + super.toString();
     }

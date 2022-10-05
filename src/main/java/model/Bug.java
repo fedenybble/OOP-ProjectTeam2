@@ -1,4 +1,6 @@
-public class Bug extends ReportType{
+package model;
+
+public class Bug extends ReportType {
     private String expectedResult;
 
     //aaaa
