@@ -13,12 +13,15 @@ public abstract class ReportType {
     private  int severidad;
     private List<Paso> pasos;
     private String actualReuslt;
+
+    private QA reporter;
     //aaaa
-    public ReportType(String titulo, String descripcion,String actualReuslt) {
+    public ReportType(String titulo, String descripcion,String actualReuslt, QA reporter) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.actualReuslt = actualReuslt;
         this.pasos = new ArrayList<>();
+        this.reporter = reporter;
     }
 
     public String getTitulo() {
@@ -67,6 +70,18 @@ public abstract class ReportType {
 
     public void setActualReuslt(String actualReuslt) {
         this.actualReuslt = actualReuslt;
+    }
+
+    public void setPasos(List<Paso> pasos) {
+        this.pasos = pasos;
+    }
+
+    public QA getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(QA reporter) {
+        this.reporter = reporter;
     }
 
     @Override
