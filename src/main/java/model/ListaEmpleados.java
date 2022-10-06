@@ -7,6 +7,32 @@ public class ListaEmpleados {
     protected List<QA> qas = new ArrayList<>();
     protected List<Dev> devs = new ArrayList<>();
 
+
+
+    public void testCasesCreatedByQA(String dni){
+        QA qaEncontrado = buscarQA(dni);
+        System.out.println("Test Cases creados por " + qaEncontrado.getName() + " son:");
+        for (TestCase testCaseIterator :
+                qaEncontrado.getTestCasesDone()) {
+            System.out.println(testCaseIterator.toString());
+        };
+    }
+
+    public QA buscarQA(String dni) {
+
+        QA qaEncontrado = null;
+        for (QA qa : qas) {
+            if (qa.getDni() == dni) {
+                qaEncontrado = qa;
+                break;
+            }
+        }
+        if (qaEncontrado != null)
+            return qaEncontrado;
+        else
+            return null;
+    }
+
     public List<QA> getQas() {
         return qas;
     }
@@ -23,11 +49,5 @@ public class ListaEmpleados {
         this.devs.add(dev);
     }
 
-    @Override
-    public String toString() {
-        return "ListaEmpleados{" +
-                "qas=" + qas +
-                ", devs=" + devs +
-                '}';
-    }
+
 }

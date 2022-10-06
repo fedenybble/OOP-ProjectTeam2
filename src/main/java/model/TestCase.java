@@ -10,6 +10,7 @@ public class TestCase {
     private List<Paso> pasos = new ArrayList<>();
     private QA creador;
 
+
     public TestCase(String titulo, QA creador) {
         this.titulo = titulo;
         this.creador = creador;
@@ -63,5 +64,15 @@ public class TestCase {
 
     public void setCreador(QA creador) {
         this.creador = creador;
+    }
+
+    @Override
+    public String toString() {
+        System.out.printf("");
+        return  "    " + this.titulo + "{" + "\n"  +
+                "       prioridad=" + prioridad + "\n" +
+                "       descripcion='" + descripcion + '\'' + "\n"  +
+                "       creador=" + creador.getName() + "\n"  +
+                "   }";
     }
 }
