@@ -5,13 +5,13 @@ import interfaces.IDev;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dev extends Person implements IDev {
+public class Dev extends Owner implements IDev {
 
     private List<Bug> bugsAssigned;
 
-    public Dev(String name, String lastname, String email, String address, int dni, int phoneNumber) {
-        super(name, lastname, email, address, dni, phoneNumber);
-        this.bugsAssigned = new ArrayList<>();
+    public Dev(String name, String lastname, String role, String email, String address, String dni, int phoneNumber, List<Bug> bugsAssigned) {
+        super(name, lastname, role, email, address, dni, phoneNumber);
+        this.bugsAssigned = bugsAssigned;
     }
 
     public List<Bug> getBugsAssigned(String actualResult) {
