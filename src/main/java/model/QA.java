@@ -7,10 +7,9 @@ public class QA extends Owner{
     private List<Bug> bugsReported;
     private List<TestCase> testCasesDone;
 
-    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber, List<Bug> bugsReported, List<TestCase> testCasesDone) {
+    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber) {
         super(name, lastname, role, email, address, dni, phoneNumber);
-        this.bugsReported = bugsReported;
-        this.testCasesDone = testCasesDone;
+
     }
 
     public List<Bug> getBugsReported() {
