@@ -36,7 +36,18 @@ public class QA extends Owner implements IQA {
         bug.setSeveridad(severidad);
         bug.setPasos(pasos);
         this.addBug(bug);
-    };
+    }
+
+    @Override
+    public void reportTestCase(String titulo, String descripcion, int prioridad, List<Paso> pasos) {
+        TestCase testCase = new TestCase(titulo, this);
+        testCase.setDescripcion(descripcion);
+        testCase.setPrioridad(prioridad);
+        testCase.setPasos(pasos);
+        testCasesDone.add(testCase);
+    }
+
+    ;
     @Override
     public void addBug(Bug bug) {
         this.bugsReported.add(bug);
@@ -53,6 +64,15 @@ public class QA extends Owner implements IQA {
                 getBugsReported()) {
             if(bugIterator.getSeveridad() == severidad)
                 System.out.println("El reporter es: " + this.getName() + " y el bug es: " + bugIterator.getTitulo() + " con severidad " + severidad);
+        }
+    }
+
+    @Override
+    public void printTestCaseByPrioridad(int prioridad) {
+        for (TestCase tcIterator:
+                getTestCasesDone()) {
+            if(tcIterator.getPrioridad() == prioridad)
+                System.out.println("El reporter es: " + this.getName() + " y el Test Case es: " + tcIterator.getTitulo() + " con una prioridad " + prioridad);
         }
     }
 }
