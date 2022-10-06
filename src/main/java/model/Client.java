@@ -8,6 +8,7 @@ public class Client {
     public static void main(String[] args) {
         List<QA> listQA = new ArrayList<>();
         List<Dev> listDev = new ArrayList<>();
+        ListaEmpleados listaEmpleados = new ListaEmpleados();
 
        /* Enhancement enc = new Enhancement("Mejorar UI","En la pagina principal no encuentro el boton logout","boton dificil de " +
                 "encontrar","hacer mas grande el boton");
@@ -23,8 +24,11 @@ public class Client {
         pasos.add(paso1);
         pasos.add(paso2);
 
-        QA robertoQA = new QA("roberto","lopez","a@a.com","aaa","aaaa","12345",12312);
-        listQA.add(robertoQA);
+        QA robertoQA = new QA("roberto","lopez","a@a.com","aaa","aaaa","12345",12312,listaEmpleados);
+        Dev robertoDev = new Dev("roberto2","lopez","a@a.com","aaa","aaaa","12345",12312,listaEmpleados);
+        System.out.println("este es de la lista de QA creada: " + listaEmpleados.getQas().get(0).getName());
+        System.out.println("este es de la lista de Devs creada: " + listaEmpleados.getDevs().get(0).getName());
+        /*listQA.add(robertoQA);
 
         robertoQA.reportBug("anda mal","anda muy mal",1,1, pasos,"deberia andar bien","anda mal");
         robertoQA.reportBug("anda mal2","anda muy mal",2,2, pasos,"deberia andar bien","anda mal");
@@ -41,7 +45,7 @@ public class Client {
 
         for (QA qa : listQA) {
             qa.printTestCaseByPrioridad(1);
-        }
+        }*/
 
         /*TestCase tc1 = new TestCase("tc1",robertoQA);
 

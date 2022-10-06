@@ -10,9 +10,9 @@ public class QA extends Owner implements IQA {
     private List<Bug> bugsReported= new ArrayList<>();
     private List<TestCase> testCasesDone = new ArrayList<>();
 
-    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber) {
+    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber,ListaEmpleados lista) {
         super(name, lastname, role, email, address, dni, phoneNumber);
-
+        lista.addQa(this);
     }
 
     public List<Bug> getBugsReported() {

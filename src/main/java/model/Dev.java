@@ -9,9 +9,9 @@ public class Dev extends Owner implements IDev {
 
     private List<Bug> bugsAssigned;
 
-    public Dev(String name, String lastname, String role, String email, String address, String dni, int phoneNumber, List<Bug> bugsAssigned) {
+    public Dev(String name, String lastname, String role, String email, String address, String dni, int phoneNumber,ListaEmpleados lista) {
         super(name, lastname, role, email, address, dni, phoneNumber);
-        this.bugsAssigned = bugsAssigned;
+        lista.addDev(this);
     }
 
     public List<Bug> getBugsAssigned(String actualResult) {
