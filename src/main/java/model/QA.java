@@ -1,16 +1,17 @@
 package model;
 
+import interfaces.IQA;
+
 import java.util.List;
 
-public class QA extends Owner{
+public class QA extends Owner implements IQA {
 
     private List<Bug> bugsReported;
     private List<TestCase> testCasesDone;
 
-    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber, List<Bug> bugsReported, List<TestCase> testCasesDone) {
+    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber) {
         super(name, lastname, role, email, address, dni, phoneNumber);
-        this.bugsReported = bugsReported;
-        this.testCasesDone = testCasesDone;
+
     }
 
     public List<Bug> getBugsReported() {
@@ -27,5 +28,15 @@ public class QA extends Owner{
 
     public void setTestCasesDone(List<TestCase> testCasesDone) {
         this.testCasesDone = testCasesDone;
+    }
+
+    @Override
+    public void addBug(Bug bug) {
+        this.bugsReported.add(bug);
+    }
+
+    @Override
+    public void addTestCaseDone(TestCase testCase) {
+        this.testCasesDone.add(testCase);
     }
 }
