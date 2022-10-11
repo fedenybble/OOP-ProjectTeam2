@@ -9,6 +9,7 @@ public class QA extends Owner implements IQA {
 
     private List<Bug> bugsReported= new ArrayList<>();
     private List<TestCase> testCasesDone = new ArrayList<>();
+    private List<Enhancement> enhancementsReported = new ArrayList<>();
 
     public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber,ListaEmpleados lista) {
         super(name, lastname, role, email, address, dni, phoneNumber);
@@ -45,6 +46,19 @@ public class QA extends Owner implements IQA {
         testCase.setPrioridad(prioridad);
         testCase.setPasos(pasos);
         testCasesDone.add(testCase);
+    }
+
+    @Override
+    public void printCreatedEHM() {
+
+    }
+
+    @Override
+    public void reportEHM(String titulo, String descripcion, String actualResult, String sugerenciaResultados, QA qa, int severidad, List<Paso> pasos) {
+        Enhancement enhancement = new Enhancement(titulo, descripcion, actualResult, sugerenciaResultados, this);
+        enhancement.setSeveridad(severidad);
+        enhancement.setPasos(pasos);
+        enhancementsReported.add(enhancement);
     }
 
     ;

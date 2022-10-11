@@ -18,7 +18,10 @@ public class Bug extends ReportType {
         this.expectedResult = expectedResult;
     }
 
-
+    public void createPaso(String descripcion, String expectedResult){
+        Paso paso = new Paso(descripcion, expectedResult);
+        super.addPaso(paso);
+    }
     @Override
     public String toString() {
         return "Bug{" +
