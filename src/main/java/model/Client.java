@@ -24,8 +24,8 @@ public class Client {
         pasos.add(paso1);
         pasos.add(paso2);
 
-        QA robertoQA = new QA("roberto","lopez","a@a.com","aaa","aaaa","12345",12312,listaEmpleados);
-        Dev robertoDev = new Dev("roberto2","lopez","a@a.com","aaa","aaaa","12345",12312,listaEmpleados);
+        QA robertoQA = new QA("roberto","lopez","a@a.com","aaa","aaaa","12345",12312, listaEmpleados);
+        Dev robertoDev = new Dev("roberto2","lopez","a@a.com","aaa","aaaa","12346",12312, listaEmpleados);
 
         System.out.println("este es de la lista de QA creada: " + listaEmpleados.getQas().get(0).getName());
         System.out.println("este es de la lista de Devs creada: " + listaEmpleados.getDevs().get(0).getName());
@@ -43,6 +43,9 @@ public class Client {
         robertoQA.reportTestCase("Probar boton login2", "El boton login ubicado arriba", 2, pasos);
         robertoQA.reportTestCase("Probar boton login3", "El boton login ubicado en el medio", 1, pasos);
         listaEmpleados.testCasesCreatedByQA("12345");
+
+        robertoDev.addBug(robertoQA.getBugsReported().get(0));
+        listaEmpleados.printBugsAssigned("12346");
 
         /*for (QA qa : listQA) {
             qa.printTestCaseByPrioridad(1);
