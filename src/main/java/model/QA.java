@@ -8,17 +8,19 @@ import java.util.List;
 public class QA extends Owner implements IQA {
 
     private List<Bug> bugsReported= new ArrayList<>();
+    private List<TestSuite> testSuites = new ArrayList<>();
     private List<TestCase> testCasesDone = new ArrayList<>();
     private List<Enhancement> enhancementsReported = new ArrayList<>();
 
-    public QA(String name, String lastname, String role, String email, String address, String dni, int phoneNumber,ListaEmpleados lista) {
-        super(name, lastname, role, email, address, dni, phoneNumber);
+    public QA(String name, String lastname, String email, String address, String dni, String phoneNumber,ListaEmpleados lista) {
+        super(name, lastname, email, address, dni, phoneNumber);
         lista.addQa(this);
     }
 
     public List<Bug> getBugsReported() {
         return bugsReported;
     }
+
 
     public void setBugsReported(List<Bug> bugsReported) {
         this.bugsReported = bugsReported;
@@ -40,12 +42,54 @@ public class QA extends Owner implements IQA {
     }
 
     @Override
-    public void reportTestCase(String titulo, String descripcion, int prioridad, List<Paso> pasos) {
+    public void reportTestCase(String titulo, String descripcion, int prioridad) {
         TestCase testCase = new TestCase(titulo, this);
         testCase.setDescripcion(descripcion);
         testCase.setPrioridad(prioridad);
-        testCase.setPasos(pasos);
+        //testCase.setPasos(pasos);
         testCasesDone.add(testCase);
+    }
+
+    @Override
+    public TestCase buscarTestCase(String titulo) {
+        TestCase testEncotnrado = null;
+        for (TestCase testCase : testCasesDone) {
+            if (testCase.getTitulo() == titulo) {
+                testEncotnrado = testCase;
+                break;
+            }
+        }
+        return testEncotnrado;
+    }
+    @Override
+    public Bug buscarBug(String titulo) {
+        Bug bugEncontrado = null;
+        for (Bug bug : bugsReported) {
+            if (bug.getTitulo() == titulo) {
+                bugEncontrado = bug;
+                break;
+            }
+        }
+        return bugEncontrado;
+    }
+
+    @Override
+    public void crearTestSuite(String titulo, String sprint) {
+        TestSuite testSuite = new TestSuite(titulo, sprint);
+        testSuites.add(testSuite);
+    }
+
+
+    @Override
+    public TestSuite buscarTestSuite(String titulo) {
+        TestSuite testSuiteEncotnrado = null;
+        for (TestSuite testSuite : testSuites) {
+            if (testSuite.getTitulo() == titulo) {
+                testSuiteEncotnrado = testSuite;
+                break;
+            }
+        }
+        return testSuiteEncotnrado;
     }
 
     @Override
@@ -61,7 +105,7 @@ public class QA extends Owner implements IQA {
         enhancementsReported.add(enhancement);
     }
 
-    ;
+
     @Override
     public void addBug(Bug bug) {
         this.bugsReported.add(bug);
@@ -76,8 +120,9 @@ public class QA extends Owner implements IQA {
     public void printBugBySeveridad(int severidad) {
         for (Bug bugIterator:
                 getBugsReported()) {
-            if(bugIterator.getSeveridad() == severidad)
+            if(severidad == bugIterator.getSeveridad()) {
                 System.out.println("El reporter es: " + this.getName() + " y el bug es: " + bugIterator.getTitulo() + " con severidad " + severidad);
+            }
         }
     }
 
@@ -88,5 +133,15 @@ public class QA extends Owner implements IQA {
             if(tcIterator.getPrioridad() == prioridad)
                 System.out.println("El reporter es: " + this.getName() + " y el Test Case es: " + tcIterator.getTitulo() + " con una prioridad " + prioridad);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "QA{" +
+                "bugsReported=" + bugsReported +
+                ", testSuites=" + testSuites +
+                ", testCasesDone=" + testCasesDone +
+                ", enhancementsReported=" + enhancementsReported +
+                "} " + super.toString();
     }
 }

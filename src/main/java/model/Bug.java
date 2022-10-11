@@ -18,8 +18,8 @@ public class Bug extends ReportType {
         this.expectedResult = expectedResult;
     }
 
-    public void createPaso(String descripcion, String expectedResult){
-        Paso paso = new Paso(descripcion, expectedResult);
+    public void createPaso(String titulo, String descripcion, String expectedResult){
+        Paso paso = new Paso(titulo, descripcion, expectedResult);
         super.addPaso(paso);
     }
     @Override

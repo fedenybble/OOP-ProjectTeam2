@@ -49,8 +49,8 @@ public class TestCase {
         return pasos;
     }
 
-    public void addPaso(String titulo, String descripcion) {
-        Paso paso = new Paso(titulo,descripcion);
+    public void addPaso(String titulo, String descripcion,String expectedResult) {
+        Paso paso = new Paso(titulo,descripcion,expectedResult);
         this.pasos.add(paso);
     }
 

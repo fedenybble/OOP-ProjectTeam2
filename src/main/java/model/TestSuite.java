@@ -83,4 +83,14 @@ public class TestSuite {
     public void addTestExcecution(TestExcecution testExcecution) {
         this.testExcecutions.add(testExcecution);
     }
+
+    @Override
+    public String toString() {
+        return "TestSuite{" +
+                "titulo='" + titulo + '\'' +
+                ", sprint='" + sprint + '\'' +
+                ", testCases=" + testCases +
+                ", testExcecutions=" + testExcecutions +
+                '}';
+    }
 }

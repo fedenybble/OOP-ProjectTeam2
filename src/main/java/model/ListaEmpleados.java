@@ -33,7 +33,19 @@ public class ListaEmpleados implements IListaEmpleados {
             return null;
     }
 
+    public void printTCbyprioridad(int prioridad){
+        for (QA qa :
+                qas) {
+            qa.printTestCaseByPrioridad(prioridad);
+        }
 
+    }
+    public void printBugsbySeveridad(int severidad){
+        for (QA qa :
+                qas) {
+            qa.printBugBySeveridad(severidad);
+        }
+    }
     @Override
     public void printBugsAssigned(String dni) {
         Dev devEncontrado = buscarDev(dni);
@@ -42,7 +54,14 @@ public class ListaEmpleados implements IListaEmpleados {
             System.out.println(bugIterator.toString());
         }
     }
-
+    /*public Bug buscarBug(String titulo){
+        Bug bugEncontrado = null;
+        for (QA qa :
+                qas) {
+            if ()
+            bugEncontrado = qa.
+        }
+    }*/
     public Dev buscarDev(String dni) {
 
         Dev devEncontrado = null;

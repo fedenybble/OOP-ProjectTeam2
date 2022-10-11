@@ -9,12 +9,11 @@ package model;
         private String email;
         private String address;
         private String dni;
-        private int phoneNumber;
+        private String phoneNumber;
 
-        public Owner(String name, String lastname, String role, String email, String address, String dni, int phoneNumber) {
+        public Owner(String name, String lastname, String email, String address, String dni, String phoneNumber) {
             this.name = name;
             this.lastname = lastname;
-            this.role = role;
             this.email = email;
             this.address = address;
             this.dni = dni;
@@ -69,15 +68,26 @@ package model;
             this.dni = dni;
         }
 
-        public int getPhoneNumber() {
+        public String getPhoneNumber() {
             return phoneNumber;
         }
 
-        public void setPhoneNumber(int phoneNumber) {
+        public void setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
 
-
+        @Override
+        public String toString() {
+            return "Owner{" +
+                    "name='" + name + '\'' +
+                    ", lastname='" + lastname + '\'' +
+                    ", role='" + role + '\'' +
+                    ", email='" + email + '\'' +
+                    ", address='" + address + '\'' +
+                    ", dni='" + dni + '\'' +
+                    ", phoneNumber='" + phoneNumber + '\'' +
+                    '}';
+        }
     }
 
 

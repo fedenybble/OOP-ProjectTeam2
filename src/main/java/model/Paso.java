@@ -2,9 +2,11 @@ package model;
 
 public class Paso {
     private String descripcion;
+    private String titulo;
     private String resutladoEsperado;
     //aaaa
-    public Paso(String descripcion, String resutladoEsperado) {
+    public Paso(String titulo,String descripcion, String resutladoEsperado) {
+        this.titulo = titulo;
         this.descripcion = descripcion;
         this.resutladoEsperado = resutladoEsperado;
     }
