@@ -7,14 +7,14 @@ import java.util.List;
 
 public class Dev extends Owner implements IDev {
 
-    private List<Bug> bugsAssigned;
+    private List<Bug> bugsAssigned = new ArrayList<>();
 
     public Dev(String name, String lastname, String role, String email, String address, String dni, int phoneNumber,ListaEmpleados lista) {
         super(name, lastname, role, email, address, dni, phoneNumber);
         lista.addDev(this);
     }
 
-    public List<Bug> getBugsAssigned(String actualResult) {
+    public List<Bug> getBugsAssigned() {
         return bugsAssigned;
     }
 
@@ -22,10 +22,6 @@ public class Dev extends Owner implements IDev {
         this.bugsAssigned = bugsAssigned;
     }
 
-    @Override
-    public void printBugsAssigned(Dev dni) {
-
-    }
 
     @Override
     public void addBug(Bug bug) {

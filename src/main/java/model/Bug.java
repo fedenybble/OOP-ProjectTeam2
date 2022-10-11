@@ -19,5 +19,10 @@ public class Bug extends ReportType {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Bug{" +
+                "expectedResult='" + expectedResult + '\'' +
+                "} " + super.toString();
+    }
 }
