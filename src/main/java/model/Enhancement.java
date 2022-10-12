@@ -18,8 +18,8 @@ public class Enhancement extends ReportType {
         this.suggestedResults = suggestedResults;
     }
     public void createPaso(String titulo, String descripcion, String expectedResult){
-        Paso paso = new Paso(titulo, descripcion, expectedResult);
-        this.addPaso(paso);
+        Step paso = new Step(titulo, descripcion, expectedResult);
+        this.addStep(paso);
     }
     @Override
     public String toString() {
