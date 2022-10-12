@@ -20,7 +20,7 @@ public class Bug extends ReportType {
 
     public void createPaso(String titulo, String descripcion, String expectedResult){
         Paso paso = new Paso(titulo, descripcion, expectedResult);
-        super.addPaso(paso);
+        this.addPaso(paso);
     }
     @Override
     public String toString() {

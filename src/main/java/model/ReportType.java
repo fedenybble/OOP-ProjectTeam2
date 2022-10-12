@@ -11,7 +11,7 @@ public abstract class ReportType {
     private String descripcion;
     private int prioridad;
     private  int severidad;
-    private List<Paso> pasos;
+    private List<Paso> pasos = new ArrayList<>();
     private String actualReuslt;
 
     private QA reporter;
@@ -20,7 +20,6 @@ public abstract class ReportType {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.actualReuslt = actualReuslt;
-        this.pasos = new ArrayList<>();
         this.reporter = reporter;
     }
 
