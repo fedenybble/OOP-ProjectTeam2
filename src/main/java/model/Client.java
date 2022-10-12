@@ -24,8 +24,8 @@ public class Client {
         System.out.println("Campos para crear un test case: titulo, descripcion y prioridad");
         qa1.reportTestCase("probar login", "descripcion1", 1);
         //qa1.reportTestCase("probar login", sc.nextLine(), Integer.valueOf(sc.nextLine()));
-        System.out.println("Campos para crear y agregar un Paso a un TestCase: titulo del Test Case(Ya creado) , titulo del Paso a crear, descripcion del paso a crear y el expected result" +
-                " del paso");
+//        System.out.println("Campos para crear y agregar un Paso a un TestCase: titulo del Test Case(Ya creado) , titulo del Paso a crear, descripcion del paso a crear y el expected result" +
+//                " del paso");
 
         //agregado de pasos al test case creado anteriormente
         qa1.buscarTestCase("probar login").addPaso("tocar boton login","tocar el boton que dice login","deberia logearse");

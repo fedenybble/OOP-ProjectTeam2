@@ -49,7 +49,7 @@ public class ListaEmpleados implements IListaEmpleados {
     @Override
     public void printBugsAssigned(String dni) {
         Dev devEncontrado = buscarDev(dni);
-        System.out.println("Los Bugs asignados a: "+devEncontrado.getName() +" son: ");
+        System.out.println("Los Bugs asignados a "+devEncontrado.getName() +" son: ");
         for (Bug bugIterator: devEncontrado.getBugsAssigned()){
             System.out.println(bugIterator.toString());
         }

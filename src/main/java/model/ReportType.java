@@ -86,13 +86,12 @@ public abstract class ReportType {
 
     @Override
     public String toString() {
-        return "model.ReportType{" +
-                "titulo='" + titulo + "\n" +
-                ", descripcion='" + descripcion + "\n" +
-                ", prioridad=" + prioridad + "\n" +
-                ", severidad=" + severidad + "\n" +
-                ", pasos=" + pasos.toString() +
-                '}';
+        return "" +
+                "- Titulo = " + titulo + "\n" +
+                "- Descripcion = " + descripcion + "\n" +
+                "- Prioridad = " + prioridad + "\n" +
+                "- Severidad = " + severidad + "\n" +
+                "- Pasos = " + pasos.toString();
     }
 }
   /*enum Prioridad{
