@@ -4,37 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestSuite {
-    private String titulo;
+    private String title;
     private String sprint;
     private List<TestCase> testCases= new ArrayList<>();
     private List<TestExcecution> testExcecutions = new ArrayList<>();
 
-    public TestSuite(String titulo, String sprint) {
-        this.titulo = titulo;
+    public TestSuite(String title, String sprint) {
+        this.title = title;
         this.sprint = sprint;
     }
 
-    public void excecuteTest(String build, String estado,Owner owner,TestCase testCase,Bug bug){
-        TestExcecution testExcecution = new TestExcecution(testCase.getTitulo(), testCase.getCreador());
-        testExcecution.setPrioridad(testCase.getPrioridad());
-        testExcecution.setDescripcion(testCase.getDescripcion());
-        testExcecution.setPasos(testCase.getPasos());
+    public void excecuteTest(String build, String state,Owner owner,TestCase testCase,Bug bug){
+        TestExcecution testExcecution = new TestExcecution(testCase.getTitle(), testCase.getCreator());
+        testExcecution.setPriority(testCase.getPriority());
+        testExcecution.setDescription(testCase.getDescription());
+        testExcecution.setSteps(testCase.getSteps());
         testExcecution.setBuild(build);
-        testExcecution.setEstado(estado);
+        testExcecution.setState(state);
         testExcecution.setOwner(owner);
         if (bug != null)
             testExcecution.setBug(bug);
         this.addTestExcecution(testExcecution);
     }
 
-    public void contadorEstados(){
-        if (this.titulo!=null) {
+    public void statusCounter(){
+        if (this.title!=null) {
             int contFail = 0;
             int contPass = 0;
             int contBlock = 0;
-            System.out.println("\n********** El status de los test del Test Suite: " + this.getTitulo() + " **********");
+            System.out.println("\n********** El status de los test del Test Suite: " + this.getTitle() + " **********");
             for (TestExcecution testEx : testExcecutions) {
-                switch (testEx.getEstado().toLowerCase()) {
+                switch (testEx.getState().toLowerCase()) {
                     case ("failed"):
                         contFail += 1;
                         break;
@@ -57,12 +57,12 @@ public class TestSuite {
 
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getSprint() {
@@ -92,7 +92,7 @@ public class TestSuite {
     @Override
     public String toString() {
         return "TestSuite{" +
-                "titulo='" + titulo + '\'' +
+                "titulo='" + title + '\'' +
                 ", sprint='" + sprint + '\'' +
                 ", testCases=" + testCases +
                 ", testExcecutions=" + testExcecutions +

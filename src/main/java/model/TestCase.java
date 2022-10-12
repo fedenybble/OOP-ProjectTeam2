@@ -4,75 +4,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestCase {
-    private String titulo;
-    private int prioridad;
-    private String descripcion;
-    private List<Paso> pasos = new ArrayList<>();
-    private QA creador;
+    private String title;
+    private int priority;
+    private String description;
+    private List<Step> steps = new ArrayList<>();
+    private QA creator;
 
 
-    public TestCase(String titulo, QA creador) {
-        this.titulo = titulo;
-        this.creador = creador;
-
-    }
-
-    public void printTestByPriority(int prioridad){
+    public TestCase(String title, QA creator) {
+        this.title = title;
+        this.creator = creator;
 
     }
 
-    public String getTitulo() {
-        return titulo;
+    public void printTestByPriority(int priority){
+
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public int getPrioridad() {
-        return prioridad;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setPrioridad(int prioridad) {
-        this.prioridad = prioridad;
+    public int getPriority() {
+        return priority;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public List<Paso> getPasos() {
-        return pasos;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void addPaso(String titulo, String descripcion,String expectedResult) {
-        Paso paso = new Paso(titulo,descripcion,expectedResult);
-        this.pasos.add(paso);
+    public List<Step> getSteps() {
+        return steps;
     }
 
-    public void setPasos(List<Paso> pasos) {
-        this.pasos = pasos;
+    public void addStep(String title, String description,String expectedResult) {
+        Step step = new Step(title,description,expectedResult);
+        this.steps.add(step);
     }
 
-    public QA getCreador() {
-        return creador;
+    public void setSteps(List<Step> steps) {
+        this.steps = steps;
     }
 
-    public void setCreador(QA creador) {
-        this.creador = creador;
+    public QA getCreator() {
+        return creator;
+    }
+
+    public void setCreator(QA creator) {
+        this.creator = creator;
     }
 
     @Override
     public String toString() {
         System.out.printf("");
-        return  "    " + this.titulo + "{" + "\n"  +
-                "       prioridad = " + prioridad + "\n" +
-                "       descripcion = " + descripcion + '\'' + "\n"  +
-                "       pasos = " + pasos.toString() + "\n" +
+        return  "    " + this.title + "{" + "\n"  +
+                "       prioridad = " + priority + "\n" +
+                "       descripcion = " + description + '\'' + "\n"  +
+                "       pasos = " + steps.toString() + "\n" +
                 "   }";
     }
 }

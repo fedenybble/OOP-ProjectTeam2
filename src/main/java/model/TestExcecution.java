@@ -6,11 +6,11 @@ public class TestExcecution extends TestCase{
     private String build;
     private Owner owner;
     private Bug bug;
-    private String estado;
+    private String state;
 
 
-    public TestExcecution(String titulo, QA creador) {
-        super(titulo, creador);
+    public TestExcecution(String title, QA creator) {
+        super(title, creator);
 
     }
 
@@ -38,12 +38,12 @@ public class TestExcecution extends TestCase{
         this.bug = bug;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getState() {
+        return state;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setState(String state) {
+        this.state = state;
     }
 
 }
