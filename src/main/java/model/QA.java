@@ -118,20 +118,31 @@ public class QA extends Owner implements IQA {
 
     @Override
     public void printBugBySeveridad(int severidad) {
+        boolean flag = true;
         for (Bug bugIterator:
                 getBugsReported()) {
+
             if(severidad == bugIterator.getSeveridad()) {
-                System.out.println("El reporter es: " + this.getName() + " y el bug es: " + bugIterator.getTitulo() + " con severidad " + severidad);
+                if (flag) {
+                    System.out.println("El reporter es " + this.getName() + " y sus bugs son:");
+                    flag = false;
+                }
+                System.out.println("    - Bug: " + bugIterator.getTitulo() + ", con severidad " + severidad);
             }
         }
     }
 
     @Override
     public void printTestCaseByPrioridad(int prioridad) {
+        boolean flag = true;
         for (TestCase tcIterator:
                 getTestCasesDone()) {
             if(tcIterator.getPrioridad() == prioridad)
-                System.out.println("El reporter es: " + this.getName() + " y el Test Case es: " + tcIterator.getTitulo() + " con una prioridad " + prioridad);
+                if (flag) {
+                    System.out.println("El reporter es " + this.getName() + " y sus test cases reportados son:");
+                    flag = false;
+                }
+                System.out.println("    - Test Case: " + tcIterator.getTitulo() + ", con una prioridad " + prioridad);
         }
     }
 

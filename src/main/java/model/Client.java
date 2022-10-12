@@ -47,7 +47,7 @@ public class Client {
         listaEmpleados.testCasesCreatedByQA("12345");
         listaEmpleados.printBugsAssigned("123456");
         listaEmpleados.printTCbyprioridad(1);
-        //listaEmpleados.printBugsbySeveridad(1);
+        listaEmpleados.printBugsbySeveridad(1);
         qa1.buscarTestSuite("TS1").contadorEstados();
 
 

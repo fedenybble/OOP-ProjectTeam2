@@ -31,6 +31,7 @@ public class TestSuite {
         int contFail = 0;
         int contPass = 0;
         int contBlock = 0;
+        System.out.println("******* El status de los test del Test Suite: " + this.getTitulo() + " *******");
         for (TestExcecution testEx : testExcecutions) {
             switch (testEx.getEstado()){
                 case ("failed"):
