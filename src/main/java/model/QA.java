@@ -124,10 +124,9 @@ public class QA extends Owner implements IQA {
     }
 
     @Override
-    public void reportEHM(String titulo, String descripcion, String actualResult, String sugerenciaResultados, QA qa, int severidad, List<Paso> pasos) {
+    public void reportEHM(String titulo, String descripcion, String actualResult, String sugerenciaResultados, QA qa, int severidad) {
         Enhancement enhancement = new Enhancement(titulo, descripcion, actualResult, sugerenciaResultados, this);
         enhancement.setSeveridad(severidad);
-        enhancement.setPasos(pasos);
         enhancementsReported.add(enhancement);
     }
 
@@ -179,11 +178,11 @@ public class QA extends Owner implements IQA {
 
     @Override
     public String toString() {
-        return "QA{" +
-                "bugsReported=" + bugsReported +
-                ", testSuites=" + testSuites +
-                ", testCasesDone=" + testCasesDone +
-                ", enhancementsReported=" + enhancementsReported +
+        return "QA {" + "\n" +
+                "bugsReported=" + bugsReported + "\n" +
+                ", testSuites=" + testSuites + "\n" +
+                ", testCasesDone=" + testCasesDone + "\n" +
+                ", enhancementsReported=" + enhancementsReported + "\n" +
                 "} " + super.toString();
     }
 }

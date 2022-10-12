@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -148,8 +149,7 @@ public class Client {
                         "Hay dos botones de login, ambos funcionan pero con uno basta.",
                         "Se inicia sesion pero hay un boton de mas",
                         "Deberia haber un solo boton", qa1,
-                        1,
-                        null);
+                        1);
 
         //Happy PATH
         listaEmpleados.testCasesCreatedByQA("39345678");
@@ -174,7 +174,10 @@ public class Client {
 //            //TEST SUITE INEXISTENTE
             listaEmpleados.buscarTestSuite("TS100").contadorEstados();
 
-
+          /*  Owner owner = new Owner("agus","lopex","a@a.com","roasario","9834948","291389231");
+            System.out.println(owner.toString());
+        System.out.println("****************************************************************************************************************************************************************************************************");
+            System.out.println(qa1.toString());*/
 
         //        //Creacion de Empleados con Input
 //        System.out.println("Datos a ingresar para crear un QA: name , lastname, email, address, dni and phonenumber");

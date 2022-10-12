@@ -17,11 +17,12 @@ public class Enhancement extends ReportType {
     public void setSugerenciaResultados(String sugerenciaResultados) {
         this.sugerenciaResultados = sugerenciaResultados;
     }
-
+    public void createPaso(String titulo, String descripcion, String expectedResult){
+        Paso paso = new Paso(titulo, descripcion, expectedResult);
+        this.addPaso(paso);
+    }
     @Override
     public String toString() {
-        return "model.Enhancement{" +
-                "sugerenciaResultados='" + sugerenciaResultados + '\'' +
-                "} \n " + super.toString();
+        return "\n - sugerenciaResultados = " + sugerenciaResultados +  "\n" +super.toString();
     }
 }

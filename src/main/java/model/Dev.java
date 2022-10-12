@@ -27,4 +27,5 @@ public class Dev extends Owner implements IDev {
     public void addBug(Bug bug) {
         this.bugsAssigned.add(bug);
     }
+
 }

@@ -4,8 +4,6 @@ package model;
 
         private String name;
         private String lastname;
-
-        private String role;
         private String email;
         private String address;
         private String dni;
@@ -34,14 +32,6 @@ package model;
 
         public void setLastname(String lastname) {
             this.lastname = lastname;
-        }
-
-        public String getRole() {
-            return role;
-        }
-
-        public void setRole(String role) {
-            this.role = role;
         }
 
         public String getEmail() {
@@ -78,14 +68,12 @@ package model;
 
         @Override
         public String toString() {
-            return "Owner{" +
-                    "name='" + name + '\'' +
-                    ", lastname='" + lastname + '\'' +
-                    ", role='" + role + '\'' +
-                    ", email='" + email + '\'' +
-                    ", address='" + address + '\'' +
-                    ", dni='" + dni + '\'' +
-                    ", phoneNumber='" + phoneNumber + '\'' +
+            return "name='" + name + "\n" +
+                    ", lastname='" + lastname + "\n"  +
+                    ", email='" + email + "\n"  +
+                    ", address='" + address + "\n"  +
+                    ", dni='" + dni + "\n"  +
+                    ", phoneNumber='" + phoneNumber + "\n"  +
                     '}';
         }
     }
