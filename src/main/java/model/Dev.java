@@ -9,7 +9,7 @@ public class Dev extends Owner implements IDev {
 
     private List<Bug> bugsAssigned = new ArrayList<>();
 
-    public Dev(String name, String lastname, String email, String address, String dni, String phoneNumber,ListaEmpleados lista) {
+    public Dev(String name, String lastname, String email, String address, String dni, String phoneNumber, EmployeeList lista) {
         super(name, lastname, email, address, dni, phoneNumber);
         lista.addDev(this);
     }

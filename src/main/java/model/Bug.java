@@ -1,13 +1,11 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Bug extends ReportType {
     private String expectedResult;
 
     //aaaa
-    public Bug(String titulo,String descripcion,String expectedResult, String actualResult,QA qa) {
-        super(titulo,descripcion,actualResult,qa);
+    public Bug(String title,String description,String expectedResult, String actualResult,QA qa) {
+        super(title, description, actualResult, qa);
         this.expectedResult = expectedResult;
 
     }
@@ -21,14 +19,14 @@ public class Bug extends ReportType {
         this.expectedResult = expectedResult;
     }
 
-    public void createPaso(String titulo, String descripcion, String expectedResult){
-        Paso paso = new Paso(titulo, descripcion, expectedResult);
-        this.addPaso(paso);
+    public void createStep(String title, String description, String expectedResult){
+        Step step = new Step(title, description, expectedResult);
+        this.addStep(step);
     }
     @Override
     public String toString() {
 
-        return "TITULO: "+this.getTitulo() + "\n- ExpectedResult = " + expectedResult + "\n" +super.toString();
+        return "TITULO: "+this.getTitle() + "\n- ExpectedResult = " + expectedResult + "\n" +super.toString();
     }
 
 }
