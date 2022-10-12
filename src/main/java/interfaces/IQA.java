@@ -15,7 +15,7 @@ public interface IQA {
     void addTestCaseDone(TestCase testCase);
     void printBugBySeveridad(int severidad);
     void printTestCaseByPrioridad(int prioridad);
-    void reportBug(String titulo, String descripcion, int prioridad, int severidad, List<Paso> pasos, String actualResult, String expectedResult);
+    Bug reportBug(String titulo, String descripcion, int prioridad, int severidad, List<Paso> pasos, String actualResult, String expectedResult);
     //void reportTestCase(String titulo, String descripcion, int prioridad, List<Paso> pasos);
 
     void reportTestCase(String titulo, String descripcion, int prioridad);
