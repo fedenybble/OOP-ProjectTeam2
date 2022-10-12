@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Bug extends ReportType {
     private String expectedResult;
 
@@ -7,6 +9,7 @@ public class Bug extends ReportType {
     public Bug(String titulo,String descripcion,String expectedResult, String actualResult,QA qa) {
         super(titulo,descripcion,actualResult,qa);
         this.expectedResult = expectedResult;
+
     }
     //asdasdasd
 

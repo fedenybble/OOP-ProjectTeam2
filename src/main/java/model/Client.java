@@ -109,7 +109,6 @@ public class Client {
                                                     "Si el usuario no completa el campo email e intenta iniciar sesion, aun asi puede iniciarse",
                                                     1,
                                                     1,
-                                                    null,
                                                     "El usuario puede iniciar sesion sin ingresar el email",
                                                     "El sistema deberia mostrar una advertencia de que el campo 'Email' esta vacio y no deberia permitir iniciar sesion" ));
 
@@ -127,7 +126,6 @@ public class Client {
                     "El usuario no puede ver las opciones de usuario",
                     1,
                     1,
-                    null,
                     "No se muestran las opciones",
                     "Se deberian mostras todas las opciones de usuario");
 
@@ -153,19 +151,29 @@ public class Client {
                         1,
                         null);
 
+        //Happy PATH
+        listaEmpleados.testCasesCreatedByQA("39345678");
+        listaEmpleados.printBugsAssigned("41345987");
+        listaEmpleados.printTCbyprioridad(1);
+        listaEmpleados.printBugsbySeveridad(1);
+        listaEmpleados.buscarTestSuite("TS3").contadorEstados();
 
 
+        System.out.println("\n\n\n*********************************************************************************************************************");
 
-//        listaEmpleados.testCasesCreatedByQA("12345");
-//        listaEmpleados.printBugsAssigned("123456");
-//        listaEmpleados.printTCbyprioridad(1);
-//        listaEmpleados.printBugsbySeveridad(1);
-//        qa1.buscarTestSuite("TS1").contadorEstados();
+        System.out.println("\n\n\nVALIDACIONES");
+        //Validaciones
+            //DNI inexistente
+            listaEmpleados.testCasesCreatedByQA("45435345");
+            //DNI inexistente
+            listaEmpleados.printBugsAssigned("4134593423487");
+            //PRIORIDAD INEXISTENTE
+            listaEmpleados.printTCbyprioridad(100);
+            //SEVERIDAD INEXISTENTE
+            listaEmpleados.printBugsbySeveridad(100);
+//            //TEST SUITE INEXISTENTE
+            listaEmpleados.buscarTestSuite("TS100").contadorEstados();
 
-
-
-//        System.out.println("este es de la lista de QA creada: " + listaEmpleados.getQas().get(0).getName());
-//        System.out.println("este es de la lista de Devs creada: " + listaEmpleados.getDevs().get(0).getName());
 
 
         //        //Creacion de Empleados con Input

@@ -10,6 +10,7 @@ public class ListaEmpleados implements IListaEmpleados {
     protected List<Dev> devs = new ArrayList<>();
 
     public void testCasesCreatedByQA(String dni){
+        System.out.println("\n****************** TEST CASES CREADOS POR QA ******************");
         try {
             QA qaEncontrado = buscarQA(dni);
             if (qaEncontrado.getTestCasesDone().size()==0)
@@ -27,20 +28,20 @@ public class ListaEmpleados implements IListaEmpleados {
     }
     public TestSuite buscarTestSuite(String titulo){
         TestSuite testSuiteEncontrado = null;
-        try {
+
             for (QA qa : qas) {
-                if (qa.buscarTestSuite(titulo).getTitulo() != null) {
+                if (qa.buscarTestSuite(titulo) instanceof TestSuite) {
                     testSuiteEncontrado = qa.buscarTestSuite(titulo);
                     break;
                 }
             }
-            return testSuiteEncontrado;
-        }catch (Exception e){
-            System.out.println("No se encontro el Test Suite con titulo " + titulo);
-            testSuiteEncontrado = new TestSuite(null,null);
-            return testSuiteEncontrado;
-        }
-
+            if (testSuiteEncontrado == null){
+                System.out.println("\n********** El status de los test del Test Suite: " + titulo + " **********");
+                System.out.println("No se encontro el Test Suite con titulo " + titulo);
+                testSuiteEncontrado = new TestSuite(null,null);
+                return testSuiteEncontrado;
+            } else
+                return testSuiteEncontrado;
     }
 
     public QA buscarQA(String dni) {
@@ -59,6 +60,7 @@ public class ListaEmpleados implements IListaEmpleados {
     }
 
     public void printTCbyprioridad(int prioridad){
+        System.out.println("\n****************** TEST CASES POR PRIORIDAD ******************");
         if(prioridad >=1 && prioridad <=4) {
             for (QA qa :
                     qas) {
@@ -70,6 +72,7 @@ public class ListaEmpleados implements IListaEmpleados {
 
     }
     public void printBugsbySeveridad(int severidad){
+        System.out.println("\n****************** BUGS POR SEVERIDAD ******************");
         if(severidad >=1 && severidad <=4) {
             for (QA qa :
                     qas) {
@@ -81,6 +84,7 @@ public class ListaEmpleados implements IListaEmpleados {
     }
     @Override
     public void printBugsAssigned(String dni) {
+        System.out.println("\n****************** BUGS ASIGNADOS A DEV ******************");
         try {
 
             Dev devEncontrado = buscarDev(dni);

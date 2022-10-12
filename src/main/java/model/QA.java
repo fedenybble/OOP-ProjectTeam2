@@ -36,10 +36,10 @@ public class QA extends Owner implements IQA {
         this.testCasesDone = testCasesDone;
     }
     @Override
-    public Bug reportBug(String titulo, String descripcion, int prioridad, int severidad, List<Paso> pasos, String actualResult, String expectedResult){
+    public Bug reportBug(String titulo, String descripcion, int prioridad, int severidad, String actualResult, String expectedResult){
         Bug bug = new Bug(titulo,descripcion,expectedResult,actualResult,this);
         bug.setSeveridad(severidad);
-        bug.setPasos(pasos);
+        bug.setPrioridad(prioridad);
         this.addBug(bug);
         return bug;
     }
@@ -150,10 +150,10 @@ public class QA extends Owner implements IQA {
 
             if(severidad == bugIterator.getSeveridad()) {
                 if (flag) {
-                    System.out.println("El reporter es " + this.getName() + " y sus bugs son:");
+                    System.out.println("El reporter es " + this.getName() + " y sus bugs, con severidad " + severidad + ", son:");
                     flag = false;
                 }
-                System.out.println("    - Bug: " + bugIterator.getTitulo() + ", con severidad " + severidad);
+                System.out.println("    - Bug: " + bugIterator.getTitulo());
             }
             if(flag)
                 System.out.println("El QA " + this.getName() + " no tiene test cases reportados con esa severidad");
@@ -167,10 +167,10 @@ public class QA extends Owner implements IQA {
                 getTestCasesDone()) {
             if(tcIterator.getPrioridad() == prioridad) {
                 if (flag) {
-                    System.out.println("El reporter es " + this.getName() + " y sus test cases reportados son:");
+                    System.out.println("El reporter es " + this.getName() + " y sus test cases, reportados con Prioridad " + prioridad +", son:");
                     flag = false;
                 }
-                System.out.println("    - Test Case: " + tcIterator.getTitulo() + ", con una prioridad " + prioridad);
+                System.out.println("    - Test Case: " + tcIterator.getTitulo());
             }
             if(flag)
                 System.out.println("El QA " + this.getName() + " no tiene test cases reportados con esa prioridad");

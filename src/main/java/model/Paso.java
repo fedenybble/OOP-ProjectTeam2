@@ -3,12 +3,12 @@ package model;
 public class Paso {
     private String descripcion;
     private String titulo;
-    private String resutladoEsperado;
+    private String resultadoEsperado;
     //aaaa
     public Paso(String titulo,String descripcion, String resutladoEsperado) {
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.resutladoEsperado = resutladoEsperado;
+        this.resultadoEsperado = resutladoEsperado;
     }
 
     public String getDescripcion() {
@@ -20,19 +20,18 @@ public class Paso {
     }
 
     public String getResutladoEsperado() {
-        return resutladoEsperado;
+        return resultadoEsperado;
     }
 
     public void setResutladoEsperado(String resutladoEsperado) {
-        this.resutladoEsperado = resutladoEsperado;
+        this.resultadoEsperado = resutladoEsperado;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("model.Paso{");
-        sb.append("descripcion='").append(descripcion).append('\'');
-        sb.append(", resutladoEsperado='").append(resutladoEsperado).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "\n            **** Step **** \n" +
+                "                   - Descripcion = " + descripcion + "\n" +
+                "                   - Titulo = " + titulo + "\n" +
+                "                   - ResultadoEsperado = " + resultadoEsperado + "\n";
     }
 }

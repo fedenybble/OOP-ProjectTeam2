@@ -70,9 +70,9 @@ public class TestCase {
     public String toString() {
         System.out.printf("");
         return  "    " + this.titulo + "{" + "\n"  +
-                "       prioridad=" + prioridad + "\n" +
-                "       descripcion='" + descripcion + '\'' + "\n"  +
-                "       creador=" + creador.getName() + "\n"  +
+                "       prioridad = " + prioridad + "\n" +
+                "       descripcion = " + descripcion + '\'' + "\n"  +
+                "       pasos = " + pasos.toString() + "\n" +
                 "   }";
     }
 }
