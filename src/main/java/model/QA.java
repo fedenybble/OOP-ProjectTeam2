@@ -34,11 +34,12 @@ public class QA extends Owner implements IQA {
         this.testCasesDone = testCasesDone;
     }
     @Override
-    public void reportBug(String titulo, String descripcion, int prioridad, int severidad, List<Paso> pasos, String actualResult, String expectedResult){
+    public Bug reportBug(String titulo, String descripcion, int prioridad, int severidad, List<Paso> pasos, String actualResult, String expectedResult){
         Bug bug = new Bug(titulo,descripcion,expectedResult,actualResult,this);
         bug.setSeveridad(severidad);
         bug.setPasos(pasos);
         this.addBug(bug);
+        return bug;
     }
 
     @Override

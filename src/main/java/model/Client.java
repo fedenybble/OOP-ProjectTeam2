@@ -9,87 +9,170 @@ public class Client {
     public static void main(String[] args) {
         ListaEmpleados listaEmpleados = new ListaEmpleados();
 
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
 
-        //Creacion de Empleados
-        System.out.println("Datos a ingresar para crear un QA: name , lastname, email, address, dni and phonenumber");
-        //QA qa1 = new QA(sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(), listaEmpleados);
-        System.out.println("Datos a ingresar para crear un DEV: name , lastname, email, address, dni and phonenumber");
-        QA qa1 = new QA("roberto","lopez","a@a.com","aaa","12345","12345", listaEmpleados);
-        //Dev dev1 = new Dev(sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(), listaEmpleados);
-        Dev dev1 = new Dev("julio","lopez","a@a.com","aaa","123456","12345", listaEmpleados);
+        //Creacion de QA
+        QA qa1 = new QA("Federico", "Padin", "federicopadin@gmail.com", "Pilar", "40955637", "1136604778", listaEmpleados);
+        QA qa2 = new QA("Agustin", "Spitale", "agusspitale@gmail.com", "Rosario", "39345678", "1134531223", listaEmpleados);
+
+        //Creacion de DEVs
+        Dev dev1 = new Dev("Enzo", "Lagos", "enzolagos@gmail.com", "Cabildo", "41345987", "1112332265", listaEmpleados);
+        Dev dev2 = new Dev("Julian", "Barbieri", "julianbarbieri@gmail.com", "Pilar", "42866453", "1176453454", listaEmpleados);
+
+        //Creacion de TestCases por cada QAs
+
+        qa1.reportTestCase( "Verificar que el boton de login inicie sesion y muestre la pagina principal",
+                            "Verificar que el boton de login muestre la pagina principal una vez que los campos esten completados",
+                            1);
+
+        qa1.reportTestCase( "Verificar que se pueda cerrar sesion",
+                            "Verificar que el usuario pueda cerrar sesion con el boton 'Cerrar Sesion' ",
+                            1);
+
+        qa2.reportTestCase( "Verificar que el usuario no pueda ingresar con el campo de email vacio",
+                            "Verificar que el usuario no puede dejar el campo de email vacio",
+                            1);
+
+        qa2.reportTestCase( "Verificar que se muestre el logo de la empresa en la parte superior de la pagina",
+                            "El logo de la empresa debe estar ubicado en la parte superior de la pagina",
+                            3);
+
+        // Agregando pasos al Test Case creados anteriormente (se lo identifica al Test Case por Titulo y se agrega el paso a ese test case identificado).
+        //Test Case 1
+        qa1.buscarTestCase("Verificar que el boton de login inicie sesion y muestre la pagina principal").
+                            addPaso("Llenar los campos email y contrasenia con informacion valida",
+                                    "El email y la contrasenia deben ser correctos y el usuario debe estar registrado",
+                                    "El usuario debe tener los campos necesarios completos");
+
+        qa1.buscarTestCase("Verificar que el boton de login inicie sesion y muestre la pagina principal").
+                            addPaso("Apretar el boton de Login",
+                                    "Luego de haber llenado los campos obligatorios, el usuario debe hacer click en el boton Login",
+                                    "El usuario debe poder iniciar sesion");
+
+        //Test Case 2
+        qa1.buscarTestCase("Verificar que se pueda cerrar sesion").
+                            addPaso("Estar en el main page",
+                                    "El usuario debe haber iniciado sesion y estar en el main page",
+                                    "Se debe mostrar un boton para cerrar sesion abajo a la derecha");
+
+        qa1.buscarTestCase("Verificar que se pueda cerrar sesion").
+                            addPaso("Apretar el boton para cerrar sesion",
+                                    "El usuario debe hacer click en el boton de cerrar sesion",
+                                    "La sesion se debe cerrar, llevando al usuario al login");
+        //Test Case 3
+        qa2.buscarTestCase("Verificar que el usuario no pueda ingresar con el campo de email vacio").
+                            addPaso("Dejar el campo 'Email' vacio",
+                                    "El campo 'Email' debe quedar vacio",
+                                    "El sistema debe notificarle al usuario que quedo un campo vacio.");
+
+        qa2.buscarTestCase("Verificar que el usuario no pueda ingresar con el campo de email vacio").
+                            addPaso("Clickear en el boton para Iniciar Sesion",
+                                    "El usuario debe hacer click en el boton 'Iniciar Sesion'",
+                                    "El usuario no debe poder iniciar sesion con un campo vacio");
+
+        //Test Case 4
+        qa2.buscarTestCase("Verificar que se muestre el logo de la empresa en la parte superior de la pagina").
+                            addPaso("Estar en el main page",
+                                    "El usuario debe haber iniciado sesion y estar ubicado en el main",
+                                    "Se debe mostrar el logo de la empresa en la parte superior de la pagina" );
+
+        // ----------------  Creacion de Test Suites, se agregan Test Cases y se ejecutan los TCs. ----------------
+
+        // PARA QA 1
+
+        // 1. Se crea el Test Suite.
+        qa1.crearTestSuite("TS1", "Sprint 1");
+        // 2. Se anade el Test Case al Test Suite.
+        qa1.buscarTestSuite("TS1").addTestCase(qa1.buscarTestCase("Verificar que el boton de login inicie sesion y muestre la pagina principal"));
+        // 3. Se busca el Test Suite por el Titulo y se ejecuta el Test Case que tiene dentro (tambien se lo busca al Test Case por el Titulo)
+        qa1.buscarTestSuite("TS1").
+                            excecuteTest("Google Chrome", "Passed", qa1, qa1.buscarTestCase("Verificar que el boton de login inicie sesion y muestre la pagina principal"), null);
+
+        // 4. Se anade otro Test Case al Test Suite.
+        qa1.buscarTestSuite("TS1").addTestCase(qa1.buscarTestCase("Verificar que se pueda cerrar sesion"));
+        // 5. Se busca el Test Suite por el Titulo y se ejecuta el Test Case que tiene dentro (tambien se lo busca al Test Case por el Titulo)
+        qa1.buscarTestSuite("TS1").
+                            excecuteTest("Google Chrome", "Passed", qa1, qa1.buscarTestCase("Verificar que se pueda cerrar sesion"), null);
+
+        // PARA QA 2
+
+        // 1. Se crea el Test Suite
+        qa2.crearTestSuite("TS2", "Sprint 2");
+        // 2. Se anade el Test Case al Test Suite
+        qa2.buscarTestSuite("TS2").addTestCase(qa2.buscarTestCase("Verificar que el usuario no pueda ingresar con el campo de email vacio"));
+        // 3. Se busca el Test Suite por el Titulo y se ejecuta el Test Case que tiene dentro (tambien se lo busca al Test Case por el Titulo).
+        // 4. Como el TC fallo, se reporta el Bug.
+
+        qa2.buscarTestSuite("TS2").
+                            excecuteTest("Google Chrome", "Failed", qa2, qa2.buscarTestCase("Verificar que el usuario no pueda ingresar con el campo de email vacio"),
+                                    qa2.reportBug(  "Se puede iniciar sesion sin email",
+                                                    "Si el usuario no completa el campo email e intenta iniciar sesion, aun asi puede iniciarse",
+                                                    1,
+                                                    1,
+                                                    null,
+                                                    "El usuario puede iniciar sesion sin ingresar el email",
+                                                    "El sistema deberia mostrar una advertencia de que el campo 'Email' esta vacio y no deberia permitir iniciar sesion" ));
+
+        //5. Se crea un nuevo Test Suite
+        qa2.crearTestSuite("TS3", "Sprint 3");
+        //6. Se anade el Test Case al Test Suite
+        qa2.buscarTestSuite("TS3").addTestCase(qa2.buscarTestCase("Verificar que se muestre el logo de la empresa en la parte superior de la pagina"));
+        //7. Se busca el Test Suite por el Titulo y se ejecuta el Test Case que tiene dentro (tambien se lo busca al Test Case por el Titulo).
+        qa2.buscarTestSuite("TS3").
+                            excecuteTest("Google Chrome", "Passed", qa2, qa2.buscarTestCase("Verificar que se muestre el logo de la empresa en la parte superior de la pagina"), null);
+
+        // CREACION DE BUGS
+
+        qa1.reportBug("No se muestran las opciones de usuario",
+                    "El usuario no puede ver las opciones de usuario",
+                    1,
+                    1,
+                    null,
+                    "No se muestran las opciones",
+                    "Se deberian mostras todas las opciones de usuario");
+
+        // Creacion de Pasos de un Bug
+
+        qa1.buscarBug("No se muestran las opciones de usuario").
+                        createPaso( "Estar ubicado en el main page",
+                                    "Estar ubicado en el main page y hacer click en Ajustes de Usuario",
+                                    "Se deberian mostrar las opciones de usuario, pero el boton no hace nada");
+
+        // Se anade el Bug al Dev.
+
+        dev1.addBug(qa1.buscarBug("No se muestran las opciones de usuario"));
+
+        dev2.addBug(qa2.buscarBug("Se puede iniciar sesion sin email"));
+
+        // Creacion de Enhancements
+
+        qa1.reportEHM(  "Esta repetido el boton de Login",
+                        "Hay dos botones de login, ambos funcionan pero con uno basta.",
+                        "Se inicia sesion pero hay un boton de mas",
+                        "Deberia haber un solo boton", qa1,
+                        1,
+                        null);
 
 
-        //Creacion de TestCases hechos por qa1
-        System.out.println("Campos para crear un test case: titulo, descripcion y prioridad");
-        qa1.reportTestCase("probar login", "descripcion1", 1);
-        //qa1.reportTestCase("probar login", sc.nextLine(), Integer.valueOf(sc.nextLine()));
-//        System.out.println("Campos para crear y agregar un Paso a un TestCase: titulo del Test Case(Ya creado) , titulo del Paso a crear, descripcion del paso a crear y el expected result" +
-//                " del paso");
-
-        //agregado de pasos al test case creado anteriormente
-        qa1.buscarTestCase("probar login").addPaso("tocar boton login","tocar el boton que dice login","deberia logearse");
-        qa1.buscarTestCase("probar login").addPaso("tocar boton login2","tocar el boton que dice login2","deberia 2");
-
-        //Crea test suite 1
-        qa1.crearTestSuite("TS1","10");
-        //agrega tc1 a test suite 1
-        qa1.buscarTestSuite("TS1").addTestCase(qa1.buscarTestCase("probar login"));
-        //ejecuta test suite 1 tc1
-        qa1.buscarTestSuite("TS1").excecuteTest("build1","failed",qa1,qa1.buscarTestCase("probar login"),null);
-        //Crear un bug
-        qa1.reportBug("no funciona login","descripcion no funciona",1,1,null,"No inicia sesion","Deberia funcionar");
-        Bug bug = new Bug("no funciona login","descripcion no funciona","Deberia funcionar","No inicia sesion",qa1);
-        bug.setSeveridad(1);
-        dev1.addBug(bug);
 
 
-        listaEmpleados.testCasesCreatedByQA("12345");
-        listaEmpleados.printBugsAssigned("123456");
-        listaEmpleados.printTCbyprioridad(1);
-        listaEmpleados.printBugsbySeveridad(1);
-        qa1.buscarTestSuite("TS1").contadorEstados();
-
-
-        /*Paso paso1 = new Paso("Hacer login","Pagina principal deberia mostrarse");
-        Paso paso2 = new Paso("Click en logout","usario deberia deslogearse");
-        List<Paso> pasos = new ArrayList<>();
-        pasos.add(paso1);
-        pasos.add(paso2);
+//        listaEmpleados.testCasesCreatedByQA("12345");
+//        listaEmpleados.printBugsAssigned("123456");
+//        listaEmpleados.printTCbyprioridad(1);
+//        listaEmpleados.printBugsbySeveridad(1);
+//        qa1.buscarTestSuite("TS1").contadorEstados();
 
 
 
-        System.out.println("este es de la lista de QA creada: " + listaEmpleados.getQas().get(0).getName());
-        System.out.println("este es de la lista de Devs creada: " + listaEmpleados.getDevs().get(0).getName());
+//        System.out.println("este es de la lista de QA creada: " + listaEmpleados.getQas().get(0).getName());
+//        System.out.println("este es de la lista de Devs creada: " + listaEmpleados.getDevs().get(0).getName());
 
-        robertoQA.reportBug("anda mal","anda muy mal",1,1, pasos,"deberia andar bien","anda mal");
-        robertoQA.reportBug("anda mal2","anda muy mal",2,2, pasos,"deberia andar bien","anda mal");
-        robertoQA.reportBug("anda mal3","anda muy mal",1,1, pasos,"deberia andar bien","anda mal");*/
 
-        /*for (QA qa :
-                listQA) {
-            qa.printBugBySeveridad(1);
-        }*/
-
-        /*robertoQA.reportTestCase("Probar boton login", "El boton login ubicado abajo", 1);
-        robertoQA.reportTestCase("Probar boton login2", "El boton login ubicado arriba", 2);
-        robertoQA.reportTestCase("Probar boton login3", "El boton login ubicado en el medio", 1);
-        listaEmpleados.testCasesCreatedByQA("12345");
-
-        julioDev.addBug(robertoQA.getBugsReported().get(0));
-        listaEmpleados.printBugsAssigned("12346");
-*/
-        /*for (QA qa : listQA) {
-            qa.printTestCaseByPrioridad(1);
-        }*/
-
-        /*TestCase tc1 = new TestCase("tc1",robertoQA);
-
-        TestSuite testS = new TestSuite("numero1","sprint1");
-        testS.addTestCase(tc1);
-        testS.excecuteTest("chorme","failed",robertoQA,tc1,null);
-
-        testS.contadorEstados();*/
+        //        //Creacion de Empleados con Input
+//        System.out.println("Datos a ingresar para crear un QA: name , lastname, email, address, dni and phonenumber");
+//        //QA qa1 = new QA(sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(), listaEmpleados);
+//        System.out.println("Datos a ingresar para crear un DEV: name , lastname, email, address, dni and phonenumber");
+//        //Dev dev1 = new Dev(sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine(), listaEmpleados)
 
     }
 }
