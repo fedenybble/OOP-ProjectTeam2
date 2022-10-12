@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface IListaEmpleados {
+public interface IEmployeeList {
 
     void printBugsAssigned (String dni);
 

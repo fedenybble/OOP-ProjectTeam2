@@ -3,25 +3,25 @@ package model;
 import java.util.List;
 
 public class Enhancement extends ReportType {
-    private String sugerenciaResultados;
+    private String suggestedResults;
 
-    public Enhancement(String titulo,String descripcion,String actualResult,String sugerenciaResultados,QA qa) {
-        super(titulo,descripcion,actualResult, qa);
-        this.sugerenciaResultados = sugerenciaResultados;
+    public Enhancement(String title,String description,String actualResult,String suggestedResults,QA qa) {
+        super(title,description,actualResult, qa);
+        this.suggestedResults = suggestedResults;
     }
 
-    public String getSugerenciaResultados() {
-        return sugerenciaResultados;
+    public String getSuggestedResults() {
+        return suggestedResults;
     }
 
-    public void setSugerenciaResultados(String sugerenciaResultados) {
-        this.sugerenciaResultados = sugerenciaResultados;
+    public void setSuggestedResults(String suggestedResults) {
+        this.suggestedResults = suggestedResults;
     }
 
     @Override
     public String toString() {
         return "model.Enhancement{" +
-                "sugerenciaResultados='" + sugerenciaResultados + '\'' +
+                "Sugerencia de Resultados = " + suggestedResults + '\'' +
                 "} \n " + super.toString();
     }
 }

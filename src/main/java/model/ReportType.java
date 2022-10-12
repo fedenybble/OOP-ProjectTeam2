@@ -1,79 +1,77 @@
 package model;
 
-import model.Paso;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ReportType {
 
-    private String titulo;
-    private String descripcion;
-    private int prioridad;
-    private  int severidad;
-    protected List<Paso> pasos;
-    private String actualReuslt;
+    private String title;
+    private String description;
+    private int priority;
+    private  int severity;
+    protected List<Step> steps;
+    private String actualResult;
 
     private QA reporter;
     //aaaa
-    public ReportType(String titulo, String descripcion,String actualReuslt, QA reporter) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.actualReuslt = actualReuslt;
+    public ReportType(String title, String description,String actualResult , QA reporter) {
+        this.title = title;
+        this.description = description;
+        this.actualResult = actualResult;
         this.reporter = reporter;
-        this.pasos  = new ArrayList<>();
+        this.steps  = new ArrayList<>();
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getPrioridad() {
-        return prioridad;
+    public int getPriority() {
+        return priority;
     }
 
-    public void setPrioridad(int prioridad) {
-        this.prioridad = prioridad;
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
-    public int getSeveridad() {
-        return severidad;
+    public int getSeverity() {
+        return severity;
     }
 
-    public void setSeveridad(int severidad) {
-        this.severidad = severidad;
+    public void setSeverity(int severity) {
+        this.severity = severity;
     }
 
-    public List<Paso> getPasos() {
-        return pasos;
+    public List<Step> getSteps() {
+        return steps;
     }
 
-    public void addPaso(Paso paso) {
-        this.pasos.add(paso);
+    public void addStep(Step step) {
+        this.steps.add(step);
     }
 
-    public String getActualReuslt() {
-        return actualReuslt;
+    public String getActualResult() {
+        return actualResult;
     }
 
-    public void setActualReuslt(String actualReuslt) {
-        this.actualReuslt = actualReuslt;
+    public void setActualResult(String actualResult) {
+        this.actualResult = actualResult;
     }
 
-    public void setPasos(List<Paso> pasos) {
-        this.pasos = pasos;
+    public void setSteps(List<Step> steps) {
+        this.steps = steps;
     }
 
     public QA getReporter() {
@@ -87,11 +85,11 @@ public abstract class ReportType {
     @Override
     public String toString() {
         return "" +
-                "- Titulo = " + titulo + "\n" +
-                "- Descripcion = " + descripcion + "\n" +
-                "- Prioridad = " + prioridad + "\n" +
-                "- Severidad = " + severidad + "\n" +
-                "- Pasos = " + pasos.toString();
+                "- Titulo = " + title + "\n" +
+                "- Descripcion = " + description + "\n" +
+                "- Prioridad = " + priority + "\n" +
+                "- Severidad = " + severity + "\n" +
+                "- Pasos = " + steps.toString();
     }
 }
   /*enum Prioridad{

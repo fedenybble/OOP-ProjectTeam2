@@ -1,18 +1,18 @@
 package model;
 
-import interfaces.IListaEmpleados;
+import interfaces.IEmployeeList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaEmpleados implements IListaEmpleados {
+public class EmployeeList implements IEmployeeList {
     protected List<QA> qas = new ArrayList<>();
     protected List<Dev> devs = new ArrayList<>();
 
     public void testCasesCreatedByQA(String dni){
         System.out.println("\n****************** TEST CASES CREADOS POR QA ******************");
         try {
-            QA qaEncontrado = buscarQA(dni);
+            QA qaEncontrado = searchQA(dni);
             if (qaEncontrado.getTestCasesDone().size()==0)
                 System.out.println("El QA " + qaEncontrado.getName() + " " + qaEncontrado.getLastname() + " no tiene TestCases reportados");
             else {
@@ -26,25 +26,25 @@ public class ListaEmpleados implements IListaEmpleados {
             System.out.println("No se encontro un QA con documento " + dni);
         }
     }
-    public TestSuite buscarTestSuite(String titulo){
+    public TestSuite searchTestSuite(String title){
         TestSuite testSuiteEncontrado = null;
 
             for (QA qa : qas) {
-                if (qa.buscarTestSuite(titulo) instanceof TestSuite) {
-                    testSuiteEncontrado = qa.buscarTestSuite(titulo);
+                if (qa.searchTestSuite(title) instanceof TestSuite) {
+                    testSuiteEncontrado = qa.searchTestSuite(title);
                     break;
                 }
             }
             if (testSuiteEncontrado == null){
-                System.out.println("\n********** El status de los test del Test Suite: " + titulo + " **********");
-                System.out.println("No se encontro el Test Suite con titulo " + titulo);
+                System.out.println("\n********** El status de los test del Test Suite: " + title + " **********");
+                System.out.println("No se encontro el Test Suite con titulo " + title);
                 testSuiteEncontrado = new TestSuite(null,null);
                 return testSuiteEncontrado;
             } else
                 return testSuiteEncontrado;
     }
 
-    public QA buscarQA(String dni) {
+    public QA searchQA(String dni) {
 
         QA qaEncontrado = null;
         for (QA qa : qas) {
@@ -59,24 +59,24 @@ public class ListaEmpleados implements IListaEmpleados {
             return null;
     }
 
-    public void printTCbyprioridad(int prioridad){
+    public void printTCbyPriority(int priority){
         System.out.println("\n****************** TEST CASES POR PRIORIDAD ******************");
-        if(prioridad >=1 && prioridad <=4) {
+        if(priority >=1 && priority <=4) {
             for (QA qa :
                     qas) {
-                qa.printTestCaseByPrioridad(prioridad);
+                qa.printTestCaseByPriority(priority);
             }
         } else{
             System.out.println("La prioridad a buscar debe estar entre 1 y 4");
         }
 
     }
-    public void printBugsbySeveridad(int severidad){
+    public void printBugsbySeverity(int severity){
         System.out.println("\n****************** BUGS POR SEVERIDAD ******************");
-        if(severidad >=1 && severidad <=4) {
+        if(severity >=1 && severity <=4) {
             for (QA qa :
                     qas) {
-                qa.printBugBySeveridad(severidad);
+                qa.printBugBySeverity(severity);
             }
         } else {
             System.out.println("La severidad a buscar debe estar entre 1 y 4");
@@ -87,7 +87,7 @@ public class ListaEmpleados implements IListaEmpleados {
         System.out.println("\n****************** BUGS ASIGNADOS A DEV ******************");
         try {
 
-            Dev devEncontrado = buscarDev(dni);
+            Dev devEncontrado = searchDev(dni);
             if (devEncontrado.getBugsAssigned().size()==0)
                 System.out.println("El Dev " + devEncontrado.getName() + " " + devEncontrado.getLastname() + " no tiene Bugs asignados");
             else {
@@ -100,7 +100,7 @@ public class ListaEmpleados implements IListaEmpleados {
             System.out.println("No se encontro un Dev con documento " + dni);
         }
     }
-    public Dev buscarDev(String dni) {
+    public Dev searchDev(String dni) {
 
         Dev devEncontrado = null;
         for (Dev dev : devs) {
