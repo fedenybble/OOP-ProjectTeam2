@@ -48,48 +48,7 @@ public class Client {
         listaEmpleados.printBugsAssigned("123456");
         listaEmpleados.printTCbyprioridad(1);
         listaEmpleados.printBugsbySeveridad(1);
-        qa1.buscarTestSuite("TS1").contadorEstados();
-
-
-        /*Paso paso1 = new Paso("Hacer login","Pagina principal deberia mostrarse");
-        Paso paso2 = new Paso("Click en logout","usario deberia deslogearse");
-        List<Paso> pasos = new ArrayList<>();
-        pasos.add(paso1);
-        pasos.add(paso2);
-
-
-
-        System.out.println("este es de la lista de QA creada: " + listaEmpleados.getQas().get(0).getName());
-        System.out.println("este es de la lista de Devs creada: " + listaEmpleados.getDevs().get(0).getName());
-
-        robertoQA.reportBug("anda mal","anda muy mal",1,1, pasos,"deberia andar bien","anda mal");
-        robertoQA.reportBug("anda mal2","anda muy mal",2,2, pasos,"deberia andar bien","anda mal");
-        robertoQA.reportBug("anda mal3","anda muy mal",1,1, pasos,"deberia andar bien","anda mal");*/
-
-        /*for (QA qa :
-                listQA) {
-            qa.printBugBySeveridad(1);
-        }*/
-
-        /*robertoQA.reportTestCase("Probar boton login", "El boton login ubicado abajo", 1);
-        robertoQA.reportTestCase("Probar boton login2", "El boton login ubicado arriba", 2);
-        robertoQA.reportTestCase("Probar boton login3", "El boton login ubicado en el medio", 1);
-        listaEmpleados.testCasesCreatedByQA("12345");
-
-        julioDev.addBug(robertoQA.getBugsReported().get(0));
-        listaEmpleados.printBugsAssigned("12346");
-*/
-        /*for (QA qa : listQA) {
-            qa.printTestCaseByPrioridad(1);
-        }*/
-
-        /*TestCase tc1 = new TestCase("tc1",robertoQA);
-
-        TestSuite testS = new TestSuite("numero1","sprint1");
-        testS.addTestCase(tc1);
-        testS.excecuteTest("chorme","failed",robertoQA,tc1,null);
-
-        testS.contadorEstados();*/
+        listaEmpleados.buscarTestSuite("TS2").contadorEstados();
 
     }
 }

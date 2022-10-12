@@ -10,19 +10,44 @@ public class ListaEmpleados implements IListaEmpleados {
     protected List<Dev> devs = new ArrayList<>();
 
     public void testCasesCreatedByQA(String dni){
-        QA qaEncontrado = buscarQA(dni);
-        System.out.println("Test Cases creados por " + qaEncontrado.getName() + " son:");
-        for (TestCase testCaseIterator :
-                qaEncontrado.getTestCasesDone()) {
-            System.out.println(testCaseIterator.toString());
-        };
+        try {
+            QA qaEncontrado = buscarQA(dni);
+            if (qaEncontrado.getTestCasesDone().size()==0)
+                System.out.println("El QA " + qaEncontrado.getName() + " " + qaEncontrado.getLastname() + " no tiene TestCases reportados");
+            else {
+                System.out.println("Test Cases creados por " + qaEncontrado.getName() + " son:");
+                for (TestCase testCaseIterator :
+                        qaEncontrado.getTestCasesDone()) {
+                    System.out.println(testCaseIterator.toString());
+                }
+            }
+        } catch (Exception e){
+            System.out.println("No se encontro un QA con documento " + dni);
+        }
+    }
+    public TestSuite buscarTestSuite(String titulo){
+        TestSuite testSuiteEncontrado = null;
+        try {
+            for (QA qa : qas) {
+                if (qa.buscarTestSuite(titulo).getTitulo() != null) {
+                    testSuiteEncontrado = qa.buscarTestSuite(titulo);
+                    break;
+                }
+            }
+            return testSuiteEncontrado;
+        }catch (Exception e){
+            System.out.println("No se encontro el Test Suite con titulo " + titulo);
+            testSuiteEncontrado = new TestSuite(null,null);
+            return testSuiteEncontrado;
+        }
+
     }
 
     public QA buscarQA(String dni) {
 
         QA qaEncontrado = null;
         for (QA qa : qas) {
-            if (qa.getDni() == dni) {
+            if (qa.getDni().equals(dni)) {
                 qaEncontrado = qa;
                 break;
             }
@@ -34,39 +59,48 @@ public class ListaEmpleados implements IListaEmpleados {
     }
 
     public void printTCbyprioridad(int prioridad){
-        for (QA qa :
-                qas) {
-            qa.printTestCaseByPrioridad(prioridad);
+        if(prioridad >=1 && prioridad <=4) {
+            for (QA qa :
+                    qas) {
+                qa.printTestCaseByPrioridad(prioridad);
+            }
+        } else{
+            System.out.println("La prioridad a buscar debe estar entre 1 y 4");
         }
 
     }
     public void printBugsbySeveridad(int severidad){
-        for (QA qa :
-                qas) {
-            qa.printBugBySeveridad(severidad);
+        if(severidad >=1 && severidad <=4) {
+            for (QA qa :
+                    qas) {
+                qa.printBugBySeveridad(severidad);
+            }
+        } else {
+            System.out.println("La severidad a buscar debe estar entre 1 y 4");
         }
     }
     @Override
     public void printBugsAssigned(String dni) {
-        Dev devEncontrado = buscarDev(dni);
-        System.out.println("Los Bugs asignados a "+devEncontrado.getName() +" son: ");
-        for (Bug bugIterator: devEncontrado.getBugsAssigned()){
-            System.out.println(bugIterator.toString());
+        try {
+
+            Dev devEncontrado = buscarDev(dni);
+            if (devEncontrado.getBugsAssigned().size()==0)
+                System.out.println("El Dev " + devEncontrado.getName() + " " + devEncontrado.getLastname() + " no tiene Bugs asignados");
+            else {
+                System.out.println("Los Bugs asignados a " + devEncontrado.getName() + " son: ");
+                for (Bug bugIterator : devEncontrado.getBugsAssigned()) {
+                    System.out.println(bugIterator.toString());
+                }
+            }
+        } catch (Exception e){
+            System.out.println("No se encontro un Dev con documento " + dni);
         }
     }
-    /*public Bug buscarBug(String titulo){
-        Bug bugEncontrado = null;
-        for (QA qa :
-                qas) {
-            if ()
-            bugEncontrado = qa.
-        }
-    }*/
     public Dev buscarDev(String dni) {
 
         Dev devEncontrado = null;
         for (Dev dev : devs) {
-            if (dev.getDni() == dni) {
+            if (dev.getDni().equals(dni)) {
                 devEncontrado = dev;
                 break;
             }

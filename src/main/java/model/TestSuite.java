@@ -28,29 +28,33 @@ public class TestSuite {
     }
 
     public void contadorEstados(){
-        int contFail = 0;
-        int contPass = 0;
-        int contBlock = 0;
-        System.out.println("******* El status de los test del Test Suite: " + this.getTitulo() + " *******");
-        for (TestExcecution testEx : testExcecutions) {
-            switch (testEx.getEstado()){
-                case ("failed"):
-                    contFail +=1;
-                    break;
-                case ("passed"):
-                    contPass +=1;
-                    break;
-                case ("blocked"):
-                    contBlock +=1;
-                    break;
-                default:
-                    break;
+        if (this.titulo!=null) {
+            int contFail = 0;
+            int contPass = 0;
+            int contBlock = 0;
+            System.out.println("******* El status de los test del Test Suite: " + this.getTitulo() + " *******");
+            for (TestExcecution testEx : testExcecutions) {
+                switch (testEx.getEstado()) {
+                    case ("failed"):
+                        contFail += 1;
+                        break;
+                    case ("passed"):
+                        contPass += 1;
+                        break;
+                    case ("blocked"):
+                        contBlock += 1;
+                        break;
+                    default:
+                        break;
+                }
+
             }
 
+            System.out.println("La cantidad de tests con estado failed es: " + contFail);
+            System.out.println("La cantidad de tests con estado passed es: " + contPass);
+            System.out.println("La cantidad de tests con estado blocked es: " + contBlock);
         }
-        System.out.println("La cantidad de tests con estado failed es: "+ contFail);
-        System.out.println("La cantidad de tests con estado passed es: "+ contPass);
-        System.out.println("La cantidad de tests con estado blocked es: "+ contBlock);
+
     }
 
     public String getTitulo() {

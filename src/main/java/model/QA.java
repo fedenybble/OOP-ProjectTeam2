@@ -3,13 +3,15 @@ package model;
 import interfaces.IQA;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class QA extends Owner implements IQA {
 
     private List<Bug> bugsReported= new ArrayList<>();
     private List<TestSuite> testSuites = new ArrayList<>();
-    private List<TestCase> testCasesDone = new ArrayList<>();
+    private Set<TestCase> testCasesDone = new HashSet<>();
     private List<Enhancement> enhancementsReported = new ArrayList<>();
 
     public QA(String name, String lastname, String email, String address, String dni, String phoneNumber,ListaEmpleados lista) {
@@ -26,11 +28,11 @@ public class QA extends Owner implements IQA {
         this.bugsReported = bugsReported;
     }
 
-    public List<TestCase> getTestCasesDone() {
+    public Set<TestCase> getTestCasesDone() {
         return testCasesDone;
     }
 
-    public void setTestCasesDone(List<TestCase> testCasesDone) {
+    public void setTestCasesDone(Set<TestCase> testCasesDone) {
         this.testCasesDone = testCasesDone;
     }
     @Override
@@ -54,7 +56,7 @@ public class QA extends Owner implements IQA {
     public TestCase buscarTestCase(String titulo) {
         TestCase testEncotnrado = null;
         for (TestCase testCase : testCasesDone) {
-            if (testCase.getTitulo() == titulo) {
+            if (testCase.getTitulo().equals(titulo)) {
                 testEncotnrado = testCase;
                 break;
             }
@@ -65,7 +67,7 @@ public class QA extends Owner implements IQA {
     public Bug buscarBug(String titulo) {
         Bug bugEncontrado = null;
         for (Bug bug : bugsReported) {
-            if (bug.getTitulo() == titulo) {
+            if (bug.getTitulo().equals(titulo)) {
                 bugEncontrado = bug;
                 break;
             }
@@ -83,18 +85,41 @@ public class QA extends Owner implements IQA {
     @Override
     public TestSuite buscarTestSuite(String titulo) {
         TestSuite testSuiteEncotnrado = null;
-        for (TestSuite testSuite : testSuites) {
-            if (testSuite.getTitulo() == titulo) {
-                testSuiteEncotnrado = testSuite;
-                break;
+        try {
+            for (TestSuite testSuite : testSuites) {
+                if (testSuite.getTitulo().equals(titulo)) {
+                    testSuiteEncotnrado = testSuite;
+                    break;
+                }
             }
+            return testSuiteEncotnrado;
+        } catch (Exception e){
+            testSuiteEncotnrado = new TestSuite("","");
+            System.out.println("No se encontro un Test Suite con titulo " + titulo);
+            return testSuiteEncotnrado;
         }
-        return testSuiteEncotnrado;
+
     }
 
     @Override
     public void printCreatedEHM() {
 
+    }
+
+    public List<TestSuite> getTestSuites() {
+        return testSuites;
+    }
+
+    public void setTestSuites(List<TestSuite> testSuites) {
+        this.testSuites = testSuites;
+    }
+
+    public List<Enhancement> getEnhancementsReported() {
+        return enhancementsReported;
+    }
+
+    public void setEnhancementsReported(List<Enhancement> enhancementsReported) {
+        this.enhancementsReported = enhancementsReported;
     }
 
     @Override
@@ -129,6 +154,8 @@ public class QA extends Owner implements IQA {
                 }
                 System.out.println("    - Bug: " + bugIterator.getTitulo() + ", con severidad " + severidad);
             }
+            if(flag)
+                System.out.println("El QA " + this.getName() + " no tiene test cases reportados con esa severidad");
         }
     }
 
@@ -137,12 +164,15 @@ public class QA extends Owner implements IQA {
         boolean flag = true;
         for (TestCase tcIterator:
                 getTestCasesDone()) {
-            if(tcIterator.getPrioridad() == prioridad)
+            if(tcIterator.getPrioridad() == prioridad) {
                 if (flag) {
                     System.out.println("El reporter es " + this.getName() + " y sus test cases reportados son:");
                     flag = false;
                 }
                 System.out.println("    - Test Case: " + tcIterator.getTitulo() + ", con una prioridad " + prioridad);
+            }
+            if(flag)
+                System.out.println("El QA " + this.getName() + " no tiene test cases reportados con esa prioridad");
         }
     }
 
